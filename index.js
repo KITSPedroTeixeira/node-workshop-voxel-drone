@@ -39,3 +39,18 @@ app.post('/takeoff', function(req, res) {
     }
   });
 });
+
+
+app.post('/up', function(req, res) {
+  var speed = Number(req.query.speed);
+
+  drone.up(speed, function(err) {
+    if (err) {
+      res.status(500);
+      res.send(err);
+    }
+    else {
+      res.send({ok: true});
+    }
+  });
+});
